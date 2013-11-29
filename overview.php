@@ -72,6 +72,8 @@ require 'includes/header.inc.php';
 
   <tr><td><div>Last save:</div></td><td><div><?php if (isset($info[$i]['Persistence']['rdb_last_save_time'])) { echo format_ago(time() - $info[$i]['Persistence']['rdb_last_save_time'], true); } else { echo 'never'; } ?> <a href="save.php?s=<?php echo $i?>"><img src="images/save.png" width="16" height="16" title="Save Now" alt="[S]" class="imgbut"></a></div></td></tr>
 
+<tr><td><div>db:</div></td><td><div><?php echo($_SESSION['db'])?></div></td></tr>
+
   </table>
   </div>
 <?php } ?>

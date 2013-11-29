@@ -1,4 +1,5 @@
 <?php
+session_start();
 require dirname(__FILE__) . '/../vendor/autoload.php';
 
 define('PHPREDIS_ADMIN_PATH', dirname(__DIR__));
@@ -71,7 +72,9 @@ if (isset($login, $login['servers'])) {
 
 
 if (!isset($server['db'])) {
-  $server['db'] = 0;
+  if(!isset($_SESSION['db'])) $_SESSION['db'] = 0;
+  if(isset($_GET['db'])) $_SESSION['db'] = intval($_GET['db']);
+  $server['db'] = intval($_SESSION['db']);
 }
 
 if (!isset($server['filter'])) {

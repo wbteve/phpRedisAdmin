@@ -164,6 +164,12 @@ require 'includes/header.inc.php';
 <option value="<?php echo $i?>" <?php echo ($server['id'] == $i) ? 'selected="selected"' : ''?>><?php echo isset($srv['name']) ? format_html($srv['name']) : $srv['host'].':'.$srv['port']?></option>
 <?php } ?>
 </select>
+
+<select id="dbsrv" onchange="document.location.href='<?php echo($_SERVER['REQUEST_URI']);?>'+'&db='+this.options[this.options.selectedIndex].value;">
+<?php for($i=0;$i<16;$i++) { ?>
+<option value="<?php echo $i?>" <?php echo ($_SESSION['db'] == $i) ? 'selected="selected"' : ''?>><?php echo($i);?></option>
+<?php } ?>
+</select>
 </p>
 
 <p>
